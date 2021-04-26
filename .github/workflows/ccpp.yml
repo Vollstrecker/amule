@@ -3,7 +3,6 @@ name: C/C++ CI
 on:
   push:
     paths:
-    - automake/*
     - m4/*
     - src/**
     - unittests/**
