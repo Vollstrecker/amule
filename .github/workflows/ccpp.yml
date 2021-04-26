@@ -2,6 +2,7 @@ name: C/C++ CI
 
 on: [push, pull_request]
 
+name: C/C++ CI
 jobs:
   build:
 
@@ -10,14 +11,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install deps
-      run: sudo apt-get install autopoint
-    - name: autogen
-      run: ./autogen.sh
-    - name: install build deps
-      run: sudo apt-get install debhelper libglib2.0-dev zlib1g-dev libwxgtk3.0-gtk3-dev libgd-dev libcrypto++-dev libreadline-dev libgeoip-dev libupnp-dev binutils-dev gettext libasio-dev autoconf
+      run: sudo apt-get install debhelper libglib2.0-dev zlib1g-dev libwxgtk3.0-gtk3-dev libgd-dev libcrypto++-dev libreadline-dev libgeoip-dev libupnp-dev binutils-dev gettext libasio-dev cmake
     - name: configure
-      run: ./configure --enable-wxcas --enable-cas --enable-webserver --enable-amule-gui --enable-amule-daemon --enable-alcc --enable-alc --enable-amulecmd --enable-geoip --with-boost
-    - name: make
-      run: make
-    - name: make check
-      run: make check
+      run: cmake -DBUILD_EVERYTHING=ON -S. -B build
+    - name: build
+      run: cmake --build -B build
+    - name: check
+      run: cd build && ctest
