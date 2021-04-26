@@ -10,10 +10,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install deps
-      run: sudo apt-get install debhelper libglib2.0-dev zlib1g-dev libwxgtk3.0-gtk3-dev libgd-dev libcrypto++-dev libreadline-dev libgeoip-dev libupnp-dev binutils-dev gettext libasio-dev cmake
+      run: sudo apt-get install debhelper libglib2.0-dev zlib1g-dev libwxgtk3.0-gtk3-dev libgd-dev libcrypto++-dev libreadline-dev libgeoip-dev libupnp-dev binutils-dev gettext libboost-dev cmake
     - name: configure
       run: cmake -DBUILD_EVERYTHING=ON -S. -B build
     - name: build
-      run: cmake --build -B build
+      run: cmake --build build
     - name: check
       run: cd build && ctest
