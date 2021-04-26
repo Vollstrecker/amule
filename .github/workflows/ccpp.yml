@@ -44,7 +44,7 @@ jobs:
     - name: autogen
       run: ./autogen.sh
     - name: install build deps
-      run: sudo apt-get install devscripts equivs && sudo mk-build-deps -i
+      run: sudo apt-get install debhelper libglib2.0-dev zlib1g-dev libwxgtk3.0-gtk3-dev libgd-dev libcrypto++-dev libreadline-dev libgeoip-dev libupnp-dev binutils-dev gettext libasio-dev autoconf
     - name: configure
       run: ./configure --enable-wxcas --enable-cas --enable-webserver --enable-amule-gui --enable-amule-daemon --enable-alcc --enable-alc --enable-amulecmd --enable-geoip --with-boost
     - name: make
