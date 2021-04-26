@@ -1,35 +1,6 @@
 name: C/C++ CI
 
-on:
-  push:
-    paths:
-    - m4/*
-    - src/**
-    - unittests/**
-    - '**/*.am'
-    - acinclude.m4
-    - configure.ac
-    - '!**/*.txt'
-    - '!src/skins/*'
-    - '!src/utils/amps/**'
-    - '!src/utils/scripts/**'
-    - '!src/utils/xas/**'
-    - '!src/webserver/default/**'
-  pull_request:
-    paths:
-    - automake/*
-    - m4/*
-    - src/**
-    - unittests/**
-    - '**/*.am'
-    - acinclude.m4
-    - configure.ac
-    - '!**/*.txt'
-    - '!src/skins/*'
-    - '!src/utils/amps/**'
-    - '!src/utils/scripts/**'
-    - '!src/utils/xas/**'
-    - '!src/webserver/default/**'
+on: [push, pull_request]
 
 jobs:
   build:
