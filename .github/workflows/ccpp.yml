@@ -17,3 +17,18 @@ jobs:
       run: cmake --build build
     - name: check
       run: cd build && ctest
+
+  build-missing-deps:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: install deps
+      run: sudo apt-get install debhelper libglib2.0-dev zlib1g-dev libwxgtk3.0-gtk3-dev libgd-dev libcrypto++-dev libreadline-dev libgeoip-dev binutils-dev gettext libboost-dev cmake
+    - name: configure
+      run: cmake -DBUILD_EVERYTHING=ON -DDOWNLOAD_AND_BUILD_DEPS=ON -S. -B build
+    - name: build
+      run: cmake --build build
+    - name: check
+      run: cd build && ctest
